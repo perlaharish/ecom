@@ -1,2 +1,2 @@
 # ecom
-Practice ecom project setup.
+Practice ecom project setup using shell script.
