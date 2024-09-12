@@ -15,5 +15,5 @@ systemctl enable catalogue
 systemctl restart catalogue
 
 dnf install mongodb-org-shell -y
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
+mongo --host 3.87.207.41 </app/schema/catalogue.js
 
