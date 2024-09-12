@@ -15,6 +15,8 @@ npm install
 systemctl enable catalogue
 systemctl restart catalogue
 
-dnf install mongodb-org-shell -y
+sudo dnf install -y mongodb-mongosh
+sudo dnf sudo install -y mongodb-mongosh-shared-openssl11
+sudo dnf install -y mongodb-mongosh-shared-openssl3
 mongo --host 3.87.207.41 </app/schema/catalogue.js
 
