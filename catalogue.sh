@@ -1,5 +1,5 @@
 cp catalogue.service /etc/systemd/system/catalogue.service
-cp mongodb-org-7.0.repo /etc/yum.repos.d/mongodb-org-7.0.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 systemctl daemon-reload
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
@@ -15,8 +15,6 @@ npm install
 systemctl enable catalogue
 systemctl restart catalogue
 
-sudo dnf install -y mongodb-mongosh
-sudo dnf sudo install -y mongodb-mongosh-shared-openssl11
-sudo dnf install -y mongodb-mongosh-shared-openssl3
-mongo --host 3.87.207.41 </app/schema/catalogue.js
+dnf install mongodb-org-shell -y
+mongo --host 172.31.42.57 </app/schema/catalogue.js
 
