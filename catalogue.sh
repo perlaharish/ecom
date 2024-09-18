@@ -5,9 +5,9 @@ echo -e "#########Reload daemon service #########" | tee -e &>> /tmp/catalogue.l
 systemctl daemon-reload  &>> /tmp/catalogue.log
 dnf module disable nodejs -y &>> /tmp/catalogue.log
 dnf module enable nodejs:18 -y &>> /tmp/catalogue.log
-echo -e "#########Install nodejs #########" | tee -e &>> /tmp/catalogue.log
+echo -e "#########Install nodejs #########" | tee -a >> /tmp/catalogue.log
 dnf install nodejs -y &>> /tmp/catalogue.log
-echo -e "#########user add #########" | tee -e &>> /tmp/catalogue.log
+echo -e "#########user add #########" | tee -a >> /tmp/catalogue.log
 useradd roboshop &>> /tmp/catalogue.log
 echo -e "#########copy the code files #########" | tee -e &>> /tmp/catalogue.log
 rm -rf /app &>> /tmp/catalogue.log
