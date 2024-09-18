@@ -12,6 +12,6 @@ mv target/shipping-1.0.jar shipping.jar
 systemctl enable shipping
 systemctl restart shipping
 dnf install mysql -y
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h 172.31.47.181 -uroot -pRoboShop@1 < /app/schema/shipping.sql
 
 systemctl restart shipping
