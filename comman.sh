@@ -1,3 +1,4 @@
+log=/tmp/roboshop.log
 func_prereq(){
 echo -e "\e[32m#########user add #########\e[0m" 
 useradd roboshop &>> ${log}
@@ -17,7 +18,6 @@ func_servicerestart(){
 }
 
 func_nodejs(){
-log=/tmp/roboshop.log
 echo -e "\e[32m#########copy the service files####[0m"
 cp ${component}.service /etc/systemd/system/${component}.service &>> ${log}
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> ${log}
