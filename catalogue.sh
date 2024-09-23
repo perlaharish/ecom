@@ -1,4 +1,5 @@
 log=/tmp/roboshop.log
+
 echo -e "\e[32m#########copy the repo files #########\e[0m" | tee -a >> ${log}
 cp catalogue.service /etc/systemd/system/catalogue.service &>> ${log}
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> ${log}
