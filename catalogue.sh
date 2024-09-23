@@ -1,4 +1,3 @@
 component=catalogue
-source common.sh
-
+source comman.sh
 nodejs
