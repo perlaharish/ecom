@@ -1,3 +1,3 @@
 component=catalogue
 source comman.sh
-nodejs
+func_nodejs
