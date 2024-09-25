@@ -9,7 +9,7 @@ func_exist_status(){
 func_prereq(){
 echo -e "\e[32m#########user add #########\e[0m"
 id roboshop &>> ${log}
-if [ $? -nq 0 ]; then
+if [ $? -ne 0 ]; then
 useradd roboshop &>> ${log}
 fi
 func_exist_status
