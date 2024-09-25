@@ -3,7 +3,7 @@ func_exist_status(){
   if [ $? -eq 0 ];then
     echo -e "\e[32mSuessfull\e[0m"
  else
-   "\e[31mFailed\e[0m"
+   echo -e "\e[31mFailed\e[0m"
    fi
 }
 func_prereq(){
