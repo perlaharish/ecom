@@ -7,8 +7,11 @@ func_exist_status(){
    fi
 }
 func_prereq(){
-echo -e "\e[32m#########user add #########\e[0m" 
+echo -e "\e[32m#########user add #########\e[0m"
+id roboshop &>> ${log}
+if [ $? -nq 0 ]; then
 useradd roboshop &>> ${log}
+fi
 func_exist_status
 echo -e "\e[32m#########copy the code files #########\e[0m"
 rm -rf /app &>> ${log}
