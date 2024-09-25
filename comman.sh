@@ -18,14 +18,15 @@ func_servicerestart(){
 }
 
 func_schema_setup(){
-  if ["${schema_type}" == "mongodb"]; then
+  if [ "${schema_type}" == "mongodb" ];
+  then
     echo -e "\e[32m#########Install mongo shell #########\e[0m"
     dnf install mongodb-org-shell -y &>> ${log}
     echo -e "\e[32m#########schema load to mongo db #########\e[0m"
     mongo --host 172.31.42.57 </app/schema/${component}.js &>> ${log}
     fi
 
-  if ["${schema_type}" == "mysql"];then
+  if [ "${schema_type}" == "mysql" ]; then
      echo -e "\e[32m#########Install mysql and load schema #########\e[0m"
       dnf install mysql -y
       mysql -h 172.31.47.181 -uroot -pRoboShop@1 < /app/schema/${component}.sql
