@@ -1,4 +1,4 @@
 component=catalogue
-source comman.sh
 schema_type=mongodb
+source comman.sh
 func_nodejs
