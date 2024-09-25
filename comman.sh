@@ -17,6 +17,23 @@ func_servicerestart(){
   systemctl restart ${component} &>> ${log}
 }
 
+func_schema_setup(){
+  if ["${schema_type}" == mongodb]; then
+    echo -e "\e[32m#########Install mongo shell #########\e[0m"
+    dnf install mongodb-org-shell -y &>> ${log}
+    echo -e "\e[32m#########schema load to mongo db #########\e[0m"
+    mongo --host 172.31.42.57 </app/schema/${component}.js &>> ${log}
+    fi
+
+  if ["${schema_type} == mysql"];then
+     echo -e "\e[32m#########Install mysql and load schema #########\e[0m"
+      dnf install mysql -y
+      mysql -h 172.31.47.181 -uroot -pRoboShop@1 < /app/schema/${component}.sql
+      echo -e "\e[32m#########restart service #########\e[0m"
+    fi
+
+}
+
 func_nodejs(){
 echo -e "\e[32m#########copy the service files####[0m"
 cp ${component}.service /etc/systemd/system/${component}.service &>> ${log}
@@ -32,11 +49,8 @@ echo -e "\e[32m#########Install app dependent files #########\e[0m"
 npm install &>> ${log}
 
 func_servicerestart
+func_schema_setup
 
-echo -e "\e[32m#########Install mongo shell #########\e[0m"  
-dnf install mongodb-org-shell -y &>> ${log}
-echo -e "\e[32m#########schema load to mongo db #########\e[0m"  
-mongo --host 172.31.42.57 </app/schema/${component}.js &>> ${log}
 }
 
 func_python(){
@@ -66,9 +80,9 @@ func_java(){
   echo -e "\e[32m########build maven package #########\e[0m"
   mvn clean package
   mv target/${component}-1.0.jar ${component}.jar
-   echo -e "\e[32m#########Install mysql and load schema #########\e[0m"
-  dnf install mysql -y
-  mysql -h 172.31.47.181 -uroot -pRoboShop@1 < /app/schema/${component}.sql
-    echo -e "\e[32m#########restart service #########\e[0m"
-     func_servicerestart
+
+  func_schema_setup
+
+  func_servicerestart
+
 }
