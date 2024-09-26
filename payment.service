@@ -10,7 +10,7 @@ Environment=USER_HOST=172.31.35.22
 Environment=USER_PORT=8080
 Environment=AMQP_HOST=172.31.45.150
 Environment=AMQP_USER=roboshop
-Environment=AMQP_PASS=roboshop123
+Environment=AMQP_PASS=rabbit_mq_pass
 
 ExecStart=/usr/local/bin/uwsgi --ini payment.ini
 ExecStop=/bin/kill -9 $MAINPID

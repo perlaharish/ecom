@@ -75,6 +75,7 @@ func_python(){
   echo -e "\e[32m#########copy service file #########\e[0m"
   cp ${component}.service /etc/systemd/system/${component}.service
   func_exist_status
+  sed -i 's/rabbit_mq_pass/${rabbit_mq_pass}/' /etc/systemd/system/${component}.service
   echo -e "\e[32m#########reload daemon service #########\e[0m"
   systemctl daemon-reload
   func_exist_status
