@@ -77,6 +77,7 @@ func_python(){
   func_exist_status
   sed -i 's/rabbit_mq_pass/${rabbit_mq_pass}/' /etc/systemd/system/${component}.service
   echo -e "\e[32m#########reload daemon service #########\e[0m"
+
   systemctl daemon-reload
   func_exist_status
   echo -e "\e[32m#########Install python #########\e[0m"
